@@ -1,0 +1,55 @@
+"""
+  token int "\d+" IntLiteral;
+  token str '\"[^\"]*\"' StringLiteral;
+  token list '\[[^\]^\[]*\]' ListLiteral;
+  separator space "\s";
+
+  START/a -> expression/a
+  ;
+
+  expression/a -> orBool/a | parens/a
+  ;
+
+  muldivaddsub/a -> parens/a
+  ( "\+" parens/b $ a = Add(a,b) $
+  | "-" parens/b $ a = Subtract(a,b) $
+  | "\*" parens/b $ a = Multiply(a, b) $
+  | "/"  parens/b $ a = Divide(a, b) $
+  | "and" parens/b $ a = And(a,b) $
+  | "or" parens/b $ a = Or(a,b) $
+  | "xor" parens/b $ a = Xor(a,b) $
+  | "\>" parens/b $ a = Greater(a,b)
+  | "\<" parens/b $ a = Less(a,b)
+  | "==" parens/b $ a = Equal(a,b)
+  )+;
+
+  muldiv/a -> addsub/a
+  ( "\*" addsub/b $ a = Multiply(a,b) $
+  | "/" addsub/b $ a = Divide(a,b)
+  )*;
+
+  addsub/a -> comparison/a
+  ( "\*" comparison/b $ a = Add(a,b) $
+  | "/" comparison/b $ a = Sub(a,b)
+  )
+  ;
+
+  comparison/a -> notBool/a
+  ( "\>" notBool/b $ a = Greater(a,b)
+  | "\<" notBool/b $ a = Less(a,b)
+  | "==" notBool/b $ a = Equal(a,b)
+  );
+
+  andBool/a -> orBool/a ("and" orBool/b $ a = And(a,b) $)*;
+
+  orBool/a -> andBool/a ("or" andBool/b $ a = Or(a,b) $)*;
+
+  xorBool/a -> literal/a "xor" literal/b $ a = Or(a,b)$;
+
+  notBool/a -> "not" andBool/a $ a = Not(a) $;
+
+  parens/a ->  "\(" expression/a "\)" | muldiv/a | addsub/a | comparison/a | notBool/a | andBool/a | orBool/a | literal/a
+  ;
+
+  literal/a -> (str/a list/b $ a = Index(a,b) $ ) | (list/a list/b $ a = Index(a,b) $) | int/a | str/a | list/a;
+  """

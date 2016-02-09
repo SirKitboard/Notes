@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Avatar Viewer - Aditya Balwani</title>
+        <script src="./js/AvatarViewer.js"></script>
+    <body>
+        <h1 style="text-align:center">Aditya Balwani HW1 Sprites</h1>
+        <table style="text-align:center;margin:auto;" border="0" cellpadding="10px" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td style="width:185px">
+                    	<h3 style="text-align:center">
+                    		Character Name : Paxap
+                    	</h3>
+                    	<canvas id="aditya_balwani_paxap" height="128" width="128" />
+                    </td>
+                    <td style="width:185px">
+                    	<h3 style="text-align:center">
+                    		Character Name : Trax
+                    	</h3>
+                    	<canvas id="aditya_balwani_trax" height="128" width="128" />
+                    </td>
+                </tr>
+        </table>
+        <div><canvas id="avatar_canvas" width="150" height="150"></canvas></div>
+        <script>
+            // FIRST GET IT READY
+            initAnimator();
+
+            // ADD AN ANIMATED CANVAS FOR EACH STUDENT
+            addAnimatedCanvas("aditya_balwani_paxap");
+            addAnimatedCanvas("aditya_balwani_trax");
+
+            // INIT THE TIMER, WHICH WILL UPDATE AND
+            initTimer();
+        </script>
+    </body>
+</html>

@@ -1,0 +1,653 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Homework2.html</title>
+<style>
+* {
+    overflow: visible !important;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    box-decoration-break: clone;
+}
+
+html, body {
+    background: #FFF;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.6;
+    color: #444;
+    word-wrap: break-word;
+	hyphens: auto;
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 4px solid #EEE;
+}
+
+code {
+    padding: .1em .4em .2em;
+    display: inline-block;
+    background-color: #f9f2f4;
+    color: #c7254e;
+    border-radius: 3px;
+    border: 0 none;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+    hyphens: manual;
+}
+
+pre code {
+    padding: 16px;
+    display: block;
+    background-color: #F9F9F9;
+    color: #333;
+    box-shadow: inset -1px -1px 0 rgba(0, 0, 0, .08);
+    word-wrap: normal;
+}
+
+/* replace light background for some hljs themes */
+code.github-css,
+code.github-gist-css,
+code.tomorrow-css,
+code.default-css,
+code.googlecode-css,
+code.ascetic-css,
+code.color-brewer-css,
+code.grayscale-css,
+code.idea-css,
+code.vs-css,
+code.xcode-css {
+    background-color: #F9F9F9 !important;
+}
+
+blockquote {
+    padding: 10px 20px;
+    margin: 10px 0 20px;
+    color: #777;
+    border: 0 none;
+    border-left: 4px solid #EEE;
+}
+
+blockquote p:last-child,
+blockquote ul:last-child,
+blockquote ol:last-child {
+    margin-bottom: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    background-color: #FFF;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #DDD;
+}
+
+table div {
+    page-break-inside: avoid;
+}
+
+th, td {
+    text-align: left;
+}
+
+table > thead > tr > th,
+table > tbody > tr > th,
+table > tfoot > tr > th,
+table > thead > tr > td,
+table > tbody > tr > td,
+table > tfoot > tr > td {
+    padding: 8px 14px;
+    vertical-align: top;
+    border-top: 1px solid #DDD;
+}
+
+table > caption + thead > tr:first-child > th,
+table > colgroup + thead > tr:first-child > th,
+table > thead:first-child > tr:first-child > th,
+table > caption + thead > tr:first-child > td,
+table > colgroup + thead > tr:first-child > td,
+table > thead:first-child > tr:first-child > td {
+    border-top: 0;
+}
+
+table > tbody + tbody {
+    border-top: 2px solid #DDD;
+}
+
+table table {
+    background-color: #FFF;
+}
+
+table > thead > tr > th,
+table > tbody > tr > th,
+table > tfoot > tr > th,
+table > thead > tr > td,
+table > tbody > tr > td,
+table > tfoot > tr > td {
+    border: 1px solid #DDD;
+}
+
+table > thead > tr > th,
+table > thead > tr > td {
+    border-bottom-width: 2px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+table > tbody > tr:nth-of-type(odd) {
+    background-color: #F9F9F9;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #111;
+    margin-bottom: 10px;
+    page-break-after: avoid;
+}
+
+h1, h2 {
+    border-bottom: 1px solid #EEE;
+}
+
+h1, h2, h3 {
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 30px;
+}
+
+h3 {
+    font-size: 24px;
+}
+
+h4 {
+    font-size: 18px;
+}
+
+h5 {
+    font-size: 16px;
+}
+
+h6 {
+    font-size: 14px;
+    color: #555;
+}
+
+p {
+    margin: 0 0 10px;
+}
+
+input[type="checkbox"] {
+    margin-right: 6px;
+    position: relative;
+    bottom: 1px;
+}
+
+ul,
+ol {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+ul li,
+ol li {
+    margin-bottom: 2px;
+}
+
+ul ul,
+ol ul,
+ul ol,
+ol ol {
+    margin-bottom: 0;
+}
+
+dl {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+dt,
+dd {
+    line-height: 1.42857143;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin-left: 0;
+}
+
+a,
+a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+a[href]:after {
+    content: " " attr(href);
+    color: #337AB7;
+}
+
+.ir a:after,
+a[href^="javascript:"]:after,
+a[href^="#"]:after {
+    content: "";
+    text-decoration: none;
+    margin-left: 0;
+}
+
+.new-page,
+.page-break,
+.next-page,
+.page-end {
+    page-break-before: always;
+}
+
+#pageHeader {
+    color: #888;
+}
+
+#pageHeader span {
+    vertical-align: middle;
+}
+
+#pageFooter {
+    border-top: 2px solid #EEE;
+    padding-top: 10px;
+    color: #888;
+    font-size: 80%;
+}
+
+/**
+ * Your markdown-themeable-pdf custom styles
+ *
+ * The default file can be found in the folder ~/.atom/packages/markdown-themeable-pdf/templates
+ * The base css file can be found in the folder ~/.atom/packages/markdown-themeable-pdf/css
+ * The current highlight.js css file can be found in the folder ~/.atom/packages/markdown-themeable-pdf/node_modules/highlight.js/styles
+ */
+
+/*
+html, body {
+	color: red;
+}
+*/
+
+/**
+ * GitHub Gist Theme
+ * Author : Louis Barranqueiro - https://github.com/LouisBarranqueiro
+ */
+
+.hljs {
+  display: block;
+  background: white;
+  padding: 0.5em;
+  color: #333333;
+  overflow-x: auto;
+  -webkit-text-size-adjust: none;
+}
+
+.hljs-comment,
+.bash .hljs-shebang,
+.java .hljs-javadoc,
+.javascript .hljs-javadoc,
+.rust .hljs-preprocessor {
+  color: #969896;
+}
+
+.hljs-string,
+.apache .hljs-sqbracket,
+.coffeescript .hljs-subst,
+.coffeescript .hljs-regexp,
+.cpp .hljs-preprocessor,
+.c .hljs-preprocessor,
+.javascript .hljs-regexp,
+.json .hljs-attribute,
+.makefile .hljs-variable,
+.markdown .hljs-value,
+.markdown .hljs-link_label,
+.markdown .hljs-strong,
+.markdown .hljs-emphasis,
+.markdown .hljs-blockquote,
+.nginx .hljs-regexp,
+.nginx .hljs-number,
+.objectivec .hljs-preprocessor .hljs-title,
+.perl .hljs-regexp,
+.php .hljs-regexp,
+.xml .hljs-value,
+.less .hljs-built_in,
+.scss .hljs-built_in {
+  color: #df5000;
+}
+
+.hljs-keyword,
+.css .hljs-at_rule,
+.css .hljs-important,
+.http .hljs-request,
+.ini .hljs-setting,
+.haskell .hljs-type,
+.java .hljs-javadoctag,
+.javascript .hljs-tag,
+.javascript .hljs-javadoctag,
+.nginx .hljs-title,
+.objectivec .hljs-preprocessor,
+.php .hljs-phpdoc,
+.sql .hljs-built_in,
+.less .hljs-tag,
+.less .hljs-at_rule,
+.scss .hljs-tag,
+.scss .hljs-at_rule,
+.scss .hljs-important,
+.stylus .hljs-at_rule,
+.go .hljs-typename,
+.swift .hljs-preprocessor {
+  color: #a71d5d;
+}
+
+.apache .hljs-common,
+.apache .hljs-cbracket,
+.apache .hljs-keyword,
+.bash .hljs-literal,
+.bash .hljs-built_in,
+.coffeescript .hljs-literal,
+.coffeescript .hljs-built_in,
+.coffeescript .hljs-number,
+.cpp .hljs-number,
+.cpp .hljs-built_in,
+.c .hljs-number,
+.c .hljs-built_in,
+.cs .hljs-number,
+.cs .hljs-built_in,
+.css .hljs-attribute,
+.css .hljs-hexcolor,
+.css .hljs-number,
+.css .hljs-function,
+.haskell .hljs-number,
+.http .hljs-literal,
+.http .hljs-attribute,
+.java .hljs-number,
+.javascript .hljs-built_in,
+.javascript .hljs-literal,
+.javascript .hljs-number,
+.json .hljs-number,
+.makefile .hljs-keyword,
+.markdown .hljs-link_reference,
+.nginx .hljs-built_in,
+.objectivec .hljs-literal,
+.objectivec .hljs-number,
+.objectivec .hljs-built_in,
+.php .hljs-literal,
+.php .hljs-number,
+.python .hljs-number,
+.ruby .hljs-prompt,
+.ruby .hljs-constant,
+.ruby .hljs-number,
+.ruby .hljs-subst .hljs-keyword,
+.ruby .hljs-symbol,
+.rust .hljs-number,
+.sql .hljs-number,
+.puppet .hljs-function,
+.less .hljs-number,
+.less .hljs-hexcolor,
+.less .hljs-function,
+.less .hljs-attribute,
+.scss .hljs-preprocessor,
+.scss .hljs-number,
+.scss .hljs-hexcolor,
+.scss .hljs-function,
+.scss .hljs-attribute,
+.stylus .hljs-number,
+.stylus .hljs-hexcolor,
+.stylus .hljs-attribute,
+.stylus .hljs-params,
+.go .hljs-built_in,
+.go .hljs-constant,
+.swift .hljs-built_in,
+.swift .hljs-number {
+  color: #0086b3;
+}
+
+.apache .hljs-tag,
+.cs .hljs-xmlDocTag,
+.css .hljs-tag,
+.xml .hljs-title,
+.stylus .hljs-tag {
+  color: #63a35c;
+}
+
+.bash .hljs-variable,
+.cs .hljs-preprocessor,
+.cs .hljs-preprocessor .hljs-keyword,
+.css .hljs-attr_selector,
+.css .hljs-value,
+.ini .hljs-value,
+.ini .hljs-keyword,
+.javascript .hljs-tag .hljs-title,
+.makefile .hljs-constant,
+.nginx .hljs-variable,
+.xml .hljs-tag,
+.scss .hljs-variable {
+  color: #333333;
+}
+
+.bash .hljs-title,
+.coffeescript .hljs-title,
+.cpp .hljs-title,
+.c .hljs-title,
+.cs .hljs-title,
+.css .hljs-id,
+.css .hljs-class,
+.css .hljs-pseudo,
+.ini .hljs-title,
+.haskell .hljs-title,
+.haskell .hljs-pragma,
+.java .hljs-title,
+.javascript .hljs-title,
+.makefile .hljs-title,
+.objectivec .hljs-title,
+.perl .hljs-sub,
+.php .hljs-title,
+.python .hljs-decorator,
+.python .hljs-title,
+.ruby .hljs-parent,
+.ruby .hljs-title,
+.rust .hljs-title,
+.xml .hljs-attribute,
+.puppet .hljs-title,
+.less .hljs-id,
+.less .hljs-pseudo,
+.less .hljs-class,
+.scss .hljs-id,
+.scss .hljs-pseudo,
+.scss .hljs-class,
+.stylus .hljs-class,
+.stylus .hljs-id,
+.stylus .hljs-pseudo,
+.stylus .hljs-title,
+.swift .hljs-title,
+.diff .hljs-chunk {
+  color: #795da3;
+}
+
+.coffeescript .hljs-reserved,
+.coffeescript .hljs-attribute {
+  color: #1d3e81;
+}
+
+.diff .hljs-chunk {
+  font-weight: bold;
+}
+
+.diff .hljs-addition {
+  color: #55a532;
+  background-color: #eaffea;
+}
+
+.diff .hljs-deletion {
+  color: #bd2c00;
+  background-color: #ffecec;
+}
+
+.markdown .hljs-link_url {
+  text-decoration: underline;
+}
+
+pre { white-space: pre-wrap !important; word-break: break-word !important; overflow: hidden !important;}
+</style>
+</head>
+<body>
+<div id="pageContent">
+<h1>CSE 305 Homework 1</h1>
+<h2>Aditya Balwani, SBUID : 109353920</h2>
+<h3>Question 4.17</h3>
+<pre><code class="hljs github-gist-css SQL">
+<span class="hljs-operator"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">DOMAIN</span> MAJORS <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">10</span>)
+  <span class="hljs-keyword">CHECK</span> ( <span class="hljs-keyword">VALUE</span> <span class="hljs-keyword">IN</span> (<span class="hljs-string">'CSE'</span>, <span class="hljs-string">'BME'</span>, <span class="hljs-string">'MAT'</span>, <span class="hljs-string">'MAT'</span>, <span class="hljs-string">'HUM'</span>, <span class="hljs-string">'ART'</span>, <span class="hljs-string">'MEC'</span>, <span class="hljs-string">'undeclared'</span>));</span>
+
+<span class="hljs-operator"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Student (
+  <span class="hljs-keyword">ID</span> <span class="hljs-built_in">INTEGER</span> AUTO_INCREMENT,
+  <span class="hljs-keyword">Name</span> <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">50</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+  Majors <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">10</span>) <span class="hljs-keyword">NOT</span> <span class="hljs-literal">NULL</span>,
+  PRIMARY <span class="hljs-keyword">KEY</span> (<span class="hljs-keyword">ID</span>)
+);</span>
+
+<span class="hljs-operator"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> <span class="hljs-keyword">Class</span>(
+  Semester <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">10</span>),
+  CrsCode <span class="hljs-built_in">CHAR</span> (<span class="hljs-number">10</span>),
+  Room <span class="hljs-built_in">CHAR</span> (<span class="hljs-number">30</span>),
+  PRIMARY <span class="hljs-keyword">KEY</span> (Semester, CrsCode)
+);</span>
+
+<span class="hljs-operator"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">TABLE</span> Takes (
+  StudentID <span class="hljs-built_in">INTEGER</span>,
+  CrsCode <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">10</span>),
+  Semester <span class="hljs-built_in">CHAR</span>(<span class="hljs-number">10</span>),
+  PRIMARY <span class="hljs-keyword">KEY</span> (StudentID, CrsCode, Semester),
+  FOREIGN <span class="hljs-keyword">KEY</span> (Semester, CrsCode)
+    <span class="hljs-keyword">REFERENCES</span> <span class="hljs-keyword">Class</span>(Semester, CrsCode)
+    <span class="hljs-keyword">ON</span> <span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">CASCADE</span>,
+  FOREIGN <span class="hljs-keyword">KEY</span> (StudentID)
+    <span class="hljs-keyword">REFERENCES</span> Student(<span class="hljs-keyword">ID</span>)
+    <span class="hljs-keyword">ON</span> <span class="hljs-keyword">DELETE</span> <span class="hljs-keyword">CASCADE</span>
+);</span>
+</code></pre>
+<h3>Question 5.10</h3>
+<h4>Relational Algebra</h4>
+<ol>
+  <li> π <sub>C.DeptID, C.CrsCode, C.CrsName, C.Descr</sub>(σ <sub>C.deptID = 'EE' | C.deptID = 'MGT'</sub>(Course &#8904; Teaching))<br/><br/></li>
+  <li> π Sn.Name (σ <sub>T1.Semster = 's1997' & T2.Semester = 'f1998'</sub>(Transcript T1 &#8904;<sub>T1.StudId = S.Id</sub> Student S &#8904;<sub>S.id = T2.StudId</sub> Transcript T2))<br/><br/></li>
+  <li>TaughtBy => π <sub>S.Id, P.Id, P.DeptId</sub> (Student S &#8904;<sub> S.ID=TR.StudId</sub> Transcript Tr &#8904; Teaching T &#8904;<sub>T.ProfId = P.ID</sub> Professor P)<br/>
+  π <sub>S.Name</sub> (σ <sub>T1.DeptId != T2.DeptID</sub> (TaughtBy T1 &#8904; <sub>T1.StudId = S.Id</sub> Student S &#8904; <sub>S.Id = T2.StudId</sub> TaughtBy T2))
+  <br/><br/></li>
+  <li>π <sub>C.CrcCode, S.StudID</sub> (σ<sub> C.DeptID='MGT'</sub> (Transcript &#8904; Student) / π <sub>StudIDM</sub> (Student))<br/><br/></li>
+  <li>π <sub>Cou.DeptID</sub> (Course Cou &#8904; Teaching Te) / π <sub>Co.CrsCode</sub> (σ<sub> Co.DeptID = Cou.DeptID AND C.DeptID = Co.DeptID AND T.ProfId = Te.ProfId</sub> (Teaching T &#8904; Course C)) <br/><br/></li>
+</ol>
+<pre><code class="hljs github-gist-css SQL"><span class="hljs-operator"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> TaughtBy(StudId, ProfId, DeptId) <span class="hljs-keyword">AS</span>
+  <span class="hljs-keyword">SELECT</span> S.<span class="hljs-keyword">Id</span>, <span class="hljs-keyword">P</span>.<span class="hljs-keyword">Id</span>, <span class="hljs-keyword">P</span>.DeptID
+  <span class="hljs-keyword">FROM</span> Student S, Professor <span class="hljs-keyword">P</span>, Teaching <span class="hljs-keyword">T</span>, Transcript TR
+  <span class="hljs-keyword">WHERE</span> S.<span class="hljs-keyword">ID</span> = TR.StudID <span class="hljs-keyword">AND</span> <span class="hljs-keyword">P</span>.<span class="hljs-keyword">ID</span> = <span class="hljs-keyword">T</span>.ProfId
+  <span class="hljs-keyword">AND</span> <span class="hljs-keyword">T</span>.Semester = TR.Semester <span class="hljs-keyword">AND</span> <span class="hljs-keyword">T</span>.CrsCode = TR.CrsCode
+  <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> S.<span class="hljs-keyword">ID</span>, <span class="hljs-keyword">P</span>.<span class="hljs-keyword">ID</span>;</span>
+
+<span class="hljs-operator"><span class="hljs-keyword">SELECT</span> S.<span class="hljs-keyword">Name</span>
+<span class="hljs-keyword">FROM</span> Student S, TaughtBy T1, TaughtBy T2
+<span class="hljs-keyword">WHERE</span> S.<span class="hljs-keyword">Id</span> = T1.StudId <span class="hljs-keyword">AND</span> S.<span class="hljs-keyword">Id</span> = T2.StudId
+  <span class="hljs-keyword">AND</span> T1.DeptId != T2.DeptId
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> S.<span class="hljs-keyword">ID</span>;</span>
+</code></pre>
+<h4>SQL</h4>
+<ol>
+<li></li>
+</ol>
+<pre><code class="hljs github-gist-css SQL"><span class="hljs-operator"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">C</span>.DeptID, <span class="hljs-keyword">C</span>.CrsCode, <span class="hljs-keyword">C</span>.CrsName, <span class="hljs-keyword">C</span>.<span class="hljs-keyword">Descr</span>
+<span class="hljs-keyword">FROM</span> Course <span class="hljs-keyword">C</span>, Teaching <span class="hljs-keyword">T</span>
+<span class="hljs-keyword">WHERE</span> Course.CrsCode = <span class="hljs-keyword">T</span>.CrsCode <span class="hljs-keyword">AND</span> <span class="hljs-keyword">T</span>.ProfID <span class="hljs-keyword">IN</span> (
+  <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">Id</span> <span class="hljs-keyword">FROM</span> Professor <span class="hljs-keyword">WHERE</span> DeptID <span class="hljs-keyword">IN</span> (<span class="hljs-string">'EE'</span>,<span class="hljs-string">'MGT'</span>)
+)
+</span></code></pre>
+<ol start="2">
+<li></li>
+</ol>
+<pre><code class="hljs github-gist-css SQL"><span class="hljs-operator"><span class="hljs-keyword">SELECT</span> S.<span class="hljs-keyword">Name</span>
+<span class="hljs-keyword">FROM</span> Student S, Transcript T1, Transcript T2
+<span class="hljs-keyword">WHERE</span> S.<span class="hljs-keyword">Id</span> = T1.StudId <span class="hljs-keyword">AND</span> S.<span class="hljs-keyword">Id</span> = T2.StudId <span class="hljs-keyword">AND</span>  T1.Semester != T2.Semester
+  <span class="hljs-keyword">AND</span> T1.Semester = <span class="hljs-string">'s1997'</span> <span class="hljs-keyword">AND</span> T2.Semester = <span class="hljs-string">'F1998'</span>
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> S.<span class="hljs-keyword">Id</span>
+</span></code></pre>
+<ol start="3">
+<li></li>
+</ol>
+<pre><code class="hljs github-gist-css SQL"><span class="hljs-operator"><span class="hljs-keyword">CREATE</span> <span class="hljs-keyword">VIEW</span> TaughtBy(StudId, ProfId, DeptId) <span class="hljs-keyword">AS</span>
+  <span class="hljs-keyword">SELECT</span> S.<span class="hljs-keyword">Id</span>, <span class="hljs-keyword">P</span>.<span class="hljs-keyword">Id</span>, <span class="hljs-keyword">P</span>.DeptID
+  <span class="hljs-keyword">FROM</span> Student S, Professor <span class="hljs-keyword">P</span>, Teaching <span class="hljs-keyword">T</span>, Transcript TR
+  <span class="hljs-keyword">WHERE</span> S.<span class="hljs-keyword">ID</span> = TR.StudID <span class="hljs-keyword">AND</span> <span class="hljs-keyword">P</span>.<span class="hljs-keyword">ID</span> = <span class="hljs-keyword">T</span>.ProfId
+  <span class="hljs-keyword">AND</span> <span class="hljs-keyword">T</span>.Semester = TR.Semester <span class="hljs-keyword">AND</span> <span class="hljs-keyword">T</span>.CrsCode = TR.CrsCode
+  <span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> S.<span class="hljs-keyword">ID</span>, <span class="hljs-keyword">P</span>.<span class="hljs-keyword">ID</span>;</span>
+
+<span class="hljs-operator"><span class="hljs-keyword">SELECT</span> S.<span class="hljs-keyword">Name</span>
+<span class="hljs-keyword">FROM</span> Student S, TaughtBy T1, TaughtBy T2
+<span class="hljs-keyword">WHERE</span> S.<span class="hljs-keyword">Id</span> = T1.StudId <span class="hljs-keyword">AND</span> S.<span class="hljs-keyword">Id</span> = T2.StudId
+  <span class="hljs-keyword">AND</span> T1.DeptId != T2.DeptId
+<span class="hljs-keyword">GROUP</span> <span class="hljs-keyword">BY</span> S.<span class="hljs-keyword">ID</span>;</span>
+</code></pre>
+<ol start="4">
+<li></li>
+</ol>
+<pre><code class="hljs github-gist-css SQL"><span class="hljs-operator"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">C</span>.CrsCode
+<span class="hljs-keyword">FROM</span> Course <span class="hljs-keyword">C</span>
+<span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">C</span>.DeptId = <span class="hljs-string">'MGT'</span> <span class="hljs-keyword">AND</span>
+  <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span> (
+  (
+    <span class="hljs-keyword">SELECT</span> S.<span class="hljs-keyword">ID</span>
+    <span class="hljs-keyword">FROM</span> Student S
+    <span class="hljs-keyword">WHERE</span> S.<span class="hljs-keyword">ID</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">IN</span> (
+      <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">T</span>.StudId
+      <span class="hljs-keyword">FROM</span> Transcript <span class="hljs-keyword">T</span>
+      <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">C</span>.CrsCode = <span class="hljs-keyword">T</span>.CrsCode
+    )
+  )
+);</span>
+</code></pre>
+<ol start="5">
+<li></li>
+</ol>
+<pre><code class="hljs github-gist-css SQL"><span class="hljs-operator"><span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">DISTINCT</span>(Cou.DeptID)
+<span class="hljs-keyword">FROM</span> Course Cou, Teaching Te
+<span class="hljs-keyword">WHERE</span> Te.CrsCode = Cou.CrsCode
+  <span class="hljs-keyword">AND</span> <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">EXISTS</span>(
+    <span class="hljs-keyword">SELECT</span> CrsCode
+    <span class="hljs-keyword">FROM</span> Course Co
+    <span class="hljs-keyword">WHERE</span> Co.DeptID = Cou.DeptID <span class="hljs-keyword">AND</span> Co.CrsCode <span class="hljs-keyword">NOT</span> <span class="hljs-keyword">IN</span> (
+      <span class="hljs-keyword">SELECT</span> <span class="hljs-keyword">C</span>.CrsCode
+      <span class="hljs-keyword">FROM</span> Teaching <span class="hljs-keyword">T</span>, Course <span class="hljs-keyword">C</span>
+      <span class="hljs-keyword">WHERE</span> <span class="hljs-keyword">T</span>.CrsCode = <span class="hljs-keyword">C</span>.CrsCode <span class="hljs-keyword">AND</span> <span class="hljs-keyword">C</span>.DeptID = Co.DeptID <span class="hljs-keyword">AND</span> <span class="hljs-keyword">T</span>.ProfId = Te.ProfId)
+)
+</span></code></pre>
+
+</div></body>
+</html>

@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Answers.html</title>
+<style>
+* {
+    overflow: visible !important;
+    -webkit-text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    box-decoration-break: clone;
+}
+
+html, body {
+    background: #FFF;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 12px;
+    line-height: 1.42857143;
+    color: #444;
+    word-wrap: break-word;
+	hyphens: auto;
+}
+
+hr {
+    margin-top: 20px;
+    margin-bottom: 20px;
+    border: 0;
+    border-top: 4px solid #EEE;
+}
+
+code {
+    padding: .1em .4em .2em;
+    display: inline-block;
+    background-color: #f9f2f4;
+    color: #c7254e;
+    border-radius: 3px;
+    border: 0 none;
+    word-wrap: normal;
+    font-family: Menlo, Monaco, Consolas, "Courier New", monospace;
+	hyphens: manual;
+}
+
+pre code {
+    padding: 16px;
+    display: block;
+    background-color: #F9F9F9;
+    color: #333;
+    box-shadow: inset -1px -1px 0 rgba(0, 0, 0, .08);
+}
+
+/* replace light background for some hljs themes */
+code.github-css,
+code.github-gist-css,
+code.tomorrow-css,
+code.default-css,
+code.googlecode-css,
+code.ascetic-css,
+code.color-brewer-css,
+code.grayscale-css,
+code.idea-css,
+code.vs-css,
+code.xcode-css {
+    background-color: #F9F9F9 !important;
+}
+
+blockquote {
+    padding: 10px 20px;
+    margin: 10px 0 20px;
+    color: #777;
+    border: 0 none;
+    border-left: 4px solid #EEE;
+}
+
+blockquote p:last-child,
+blockquote ul:last-child,
+blockquote ol:last-child {
+    margin-bottom: 0;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+    background-color: #FFF;
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 20px;
+    border: 1px solid #DDD;
+}
+
+table div {
+    page-break-inside: avoid;
+}
+
+th, td {
+    text-align: left;
+}
+
+table > thead > tr > th,
+table > tbody > tr > th,
+table > tfoot > tr > th,
+table > thead > tr > td,
+table > tbody > tr > td,
+table > tfoot > tr > td {
+    padding: 8px 14px;
+    vertical-align: top;
+    border-top: 1px solid #DDD;
+}
+
+table > caption + thead > tr:first-child > th,
+table > colgroup + thead > tr:first-child > th,
+table > thead:first-child > tr:first-child > th,
+table > caption + thead > tr:first-child > td,
+table > colgroup + thead > tr:first-child > td,
+table > thead:first-child > tr:first-child > td {
+    border-top: 0;
+}
+
+table > tbody + tbody {
+    border-top: 2px solid #DDD;
+}
+
+table table {
+    background-color: #FFF;
+}
+
+table > thead > tr > th,
+table > tbody > tr > th,
+table > tfoot > tr > th,
+table > thead > tr > td,
+table > tbody > tr > td,
+table > tfoot > tr > td {
+    border: 1px solid #DDD;
+}
+
+table > thead > tr > th,
+table > thead > tr > td {
+    border-bottom-width: 2px;
+    text-align: center;
+    vertical-align: middle;
+}
+
+table > tbody > tr:nth-of-type(odd) {
+    background-color: #F9F9F9;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    vertical-align: middle;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: inherit;
+    font-weight: 500;
+    line-height: 1.1;
+    color: #111;
+    margin-bottom: 10px;
+    page-break-after: avoid;
+}
+
+h1, h2 {
+    border-bottom: 1px solid #EEE;
+}
+
+h1, h2, h3 {
+    padding-bottom: 12px;
+    margin-bottom: 18px;
+}
+
+h1 {
+    font-size: 30px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h3 {
+    font-size: 18px;
+}
+
+h4 {
+    font-size: 16px;
+}
+
+h5 {
+    font-size: 14px;
+}
+
+h6 {
+    font-size: 12px;
+    color: #555;
+}
+
+p {
+    margin: 0 0 10px;
+}
+
+input[type="checkbox"] {
+    margin-right: 6px;
+}
+
+ul,
+ol {
+    margin-top: 0;
+    margin-bottom: 10px;
+}
+
+ul ul,
+ol ul,
+ul ol,
+ol ol {
+    margin-bottom: 0;
+}
+
+dl {
+    margin-top: 0;
+    margin-bottom: 20px;
+}
+
+dt,
+dd {
+    line-height: 1.42857143;
+}
+
+dt {
+    font-weight: bold;
+}
+
+dd {
+    margin-left: 0;
+}
+
+a,
+a:visited {
+    text-decoration: none;
+    color: inherit;
+}
+
+a[href]:after {
+    content: " " attr(href);
+    color: #337AB7;
+}
+
+.ir a:after,
+a[href^="javascript:"]:after,
+a[href^="#"]:after {
+    content: "";
+    text-decoration: none;
+    margin-left: 0;
+}
+
+.new-page,
+.page-break,
+.next-page,
+.page-end {
+    page-break-before: always;
+}
+
+#pageHeader {
+    color: #888;
+}
+
+#pageHeader span {
+    vertical-align: middle;
+}
+
+#pageFooter {
+    border-top: 2px solid #EEE;
+    padding-top: 10px;
+    color: #888;
+    font-size: 80%;
+}
+
+/**
+ * Your markdown-themeable-pdf custom styles
+ *
+ * The default file can be found in the folder ~/.atom/packages/markdown-themeable-pdf/templates
+ * The base css file can be found in the folder ~/.atom/packages/markdown-themeable-pdf/css
+ * The current highlight.js css file can be found in the folder ~/.atom/packages/markdown-themeable-pdf/node_modules/highlight.js/styles
+ */
+
+/*
+html, body {
+	color: red;
+}
+*/
+
+/**
+ * GitHub Gist Theme
+ * Author : Louis Barranqueiro - https://github.com/LouisBarranqueiro
+ */
+
+.hljs {
+  display: block;
+  background: white;
+  padding: 0.5em;
+  color: #333333;
+  overflow-x: auto;
+  -webkit-text-size-adjust: none;
+}
+
+.hljs-comment,
+.bash .hljs-shebang,
+.java .hljs-javadoc,
+.javascript .hljs-javadoc,
+.rust .hljs-preprocessor {
+  color: #969896;
+}
+
+.hljs-string,
+.apache .hljs-sqbracket,
+.coffeescript .hljs-subst,
+.coffeescript .hljs-regexp,
+.cpp .hljs-preprocessor,
+.c .hljs-preprocessor,
+.javascript .hljs-regexp,
+.json .hljs-attribute,
+.makefile .hljs-variable,
+.markdown .hljs-value,
+.markdown .hljs-link_label,
+.markdown .hljs-strong,
+.markdown .hljs-emphasis,
+.markdown .hljs-blockquote,
+.nginx .hljs-regexp,
+.nginx .hljs-number,
+.objectivec .hljs-preprocessor .hljs-title,
+.perl .hljs-regexp,
+.php .hljs-regexp,
+.xml .hljs-value,
+.less .hljs-built_in,
+.scss .hljs-built_in {
+  color: #df5000;
+}
+
+.hljs-keyword,
+.css .hljs-at_rule,
+.css .hljs-important,
+.http .hljs-request,
+.ini .hljs-setting,
+.haskell .hljs-type,
+.java .hljs-javadoctag,
+.javascript .hljs-tag,
+.javascript .hljs-javadoctag,
+.nginx .hljs-title,
+.objectivec .hljs-preprocessor,
+.php .hljs-phpdoc,
+.sql .hljs-built_in,
+.less .hljs-tag,
+.less .hljs-at_rule,
+.scss .hljs-tag,
+.scss .hljs-at_rule,
+.scss .hljs-important,
+.stylus .hljs-at_rule,
+.go .hljs-typename,
+.swift .hljs-preprocessor {
+  color: #a71d5d;
+}
+
+.apache .hljs-common,
+.apache .hljs-cbracket,
+.apache .hljs-keyword,
+.bash .hljs-literal,
+.bash .hljs-built_in,
+.coffeescript .hljs-literal,
+.coffeescript .hljs-built_in,
+.coffeescript .hljs-number,
+.cpp .hljs-number,
+.cpp .hljs-built_in,
+.c .hljs-number,
+.c .hljs-built_in,
+.cs .hljs-number,
+.cs .hljs-built_in,
+.css .hljs-attribute,
+.css .hljs-hexcolor,
+.css .hljs-number,
+.css .hljs-function,
+.haskell .hljs-number,
+.http .hljs-literal,
+.http .hljs-attribute,
+.java .hljs-number,
+.javascript .hljs-built_in,
+.javascript .hljs-literal,
+.javascript .hljs-number,
+.json .hljs-number,
+.makefile .hljs-keyword,
+.markdown .hljs-link_reference,
+.nginx .hljs-built_in,
+.objectivec .hljs-literal,
+.objectivec .hljs-number,
+.objectivec .hljs-built_in,
+.php .hljs-literal,
+.php .hljs-number,
+.python .hljs-number,
+.ruby .hljs-prompt,
+.ruby .hljs-constant,
+.ruby .hljs-number,
+.ruby .hljs-subst .hljs-keyword,
+.ruby .hljs-symbol,
+.rust .hljs-number,
+.sql .hljs-number,
+.puppet .hljs-function,
+.less .hljs-number,
+.less .hljs-hexcolor,
+.less .hljs-function,
+.less .hljs-attribute,
+.scss .hljs-preprocessor,
+.scss .hljs-number,
+.scss .hljs-hexcolor,
+.scss .hljs-function,
+.scss .hljs-attribute,
+.stylus .hljs-number,
+.stylus .hljs-hexcolor,
+.stylus .hljs-attribute,
+.stylus .hljs-params,
+.go .hljs-built_in,
+.go .hljs-constant,
+.swift .hljs-built_in,
+.swift .hljs-number {
+  color: #0086b3;
+}
+
+.apache .hljs-tag,
+.cs .hljs-xmlDocTag,
+.css .hljs-tag,
+.xml .hljs-title,
+.stylus .hljs-tag {
+  color: #63a35c;
+}
+
+.bash .hljs-variable,
+.cs .hljs-preprocessor,
+.cs .hljs-preprocessor .hljs-keyword,
+.css .hljs-attr_selector,
+.css .hljs-value,
+.ini .hljs-value,
+.ini .hljs-keyword,
+.javascript .hljs-tag .hljs-title,
+.makefile .hljs-constant,
+.nginx .hljs-variable,
+.xml .hljs-tag,
+.scss .hljs-variable {
+  color: #333333;
+}
+
+.bash .hljs-title,
+.coffeescript .hljs-title,
+.cpp .hljs-title,
+.c .hljs-title,
+.cs .hljs-title,
+.css .hljs-id,
+.css .hljs-class,
+.css .hljs-pseudo,
+.ini .hljs-title,
+.haskell .hljs-title,
+.haskell .hljs-pragma,
+.java .hljs-title,
+.javascript .hljs-title,
+.makefile .hljs-title,
+.objectivec .hljs-title,
+.perl .hljs-sub,
+.php .hljs-title,
+.python .hljs-decorator,
+.python .hljs-title,
+.ruby .hljs-parent,
+.ruby .hljs-title,
+.rust .hljs-title,
+.xml .hljs-attribute,
+.puppet .hljs-title,
+.less .hljs-id,
+.less .hljs-pseudo,
+.less .hljs-class,
+.scss .hljs-id,
+.scss .hljs-pseudo,
+.scss .hljs-class,
+.stylus .hljs-class,
+.stylus .hljs-id,
+.stylus .hljs-pseudo,
+.stylus .hljs-title,
+.swift .hljs-title,
+.diff .hljs-chunk {
+  color: #795da3;
+}
+
+.coffeescript .hljs-reserved,
+.coffeescript .hljs-attribute {
+  color: #1d3e81;
+}
+
+.diff .hljs-chunk {
+  font-weight: bold;
+}
+
+.diff .hljs-addition {
+  color: #55a532;
+  background-color: #eaffea;
+}
+
+.diff .hljs-deletion {
+  color: #bd2c00;
+  background-color: #ffecec;
+}
+
+.markdown .hljs-link_url {
+  text-decoration: underline;
+}
+
+
+</style>
+</head>
+<body>
+<div id="pageContent">
+<h1>CSE 307 Lab 2</h1>
+<h2>Aditya Balwani, SBU ID : 109353920</h2>
+<h3>I. WireShark HTTP Lab</h3>
+<h4>Part 1</h4>
+<ol>
+<li>HTTP 1.1</li>
+<li>The browser accepts English (US) as mentioned in <code>Accept-Language: en-US,en;</code></li>
+<li>My IP Address : 10.245.247.201 <br> gaia IP Address : 128.119.245.12</li>
+<li>The server returns status code 200 which is HTTP OK</li>
+<li>Last-Modified: Sat, 19 Sep 2015 05:59:01 GMT</li>
+<li>128 Bytes</li>
+<li>No, all the headers are found in the raw data</li>
+</ol>
+<p><img src="img/1-1.PNG" alt="Capture 1-1"></p>
+<p><img src="img/1-2.PNG" alt="Capture 1-2"></p>
+<div class="page-break"></div>
+<h4>Part 2</h4>
+<ol start="8">
+<li>No, the first one does not have IF-MODIFIED-SINCE</li>
+<li>Yes the server explicitly returns the content of the file, since its there in the raw data</li>
+<li>Yes, the second HTTP GET Request contains an IF-MODIFIED-SINCE header, and it contains the date and time of when the page was last modified</li>
+<li>The server return a 304 NOT MODIFIED, and it did not explicitly return the contents of the file.</li>
+</ol>
+<p><img src="img/2-1.PNG" alt="Capture 2-1"></p>
+<p><img src="img/2-2.PNG" alt="Capture 2-2"></p>
+<p><img src="img/2-3.PNG" alt="Capture 2-3"></p>
+<p><img src="img/2-4.PNG" alt="Capture 2-4"></p>
+<div class="page-break"></div>
+<h4>Part 3</h4>
+<ol start="12">
+<li>The Browser sent 1 HTTP GET request which is packet number 1945</li>
+<li>Packet number 1953 in the trace contains the status code and phrase associated with the response to the HTTP GET request.</li>
+<li>Status Code 200, Phrase : HTTP OK</li>
+<li>4 TCP Segments</li>
+</ol>
+<p><img src="img/3-1.PNG" alt="Capture 3-1"></p>
+<p><img src="img/3-2.PNG" alt="Capture 3-2"></p>
+<div class="page-break"></div>
+<h4>Part 4</h4>
+<ol start="16">
+<li>The browser sent 4 HTTP GET Requests <br/>
+1 to 128.119.245.12 for the Wireshark lab webpage <br/>
+1 to 165.193.140.14 for the Pearson Logo <br/>
+2 to 128.119.240.90 for the cover of the 5th Edition of Computer Networking</li>
+<li>We can tell whether the browser downloaded the images serially or in parallel by looking at the time of the requests. Since the GET for the second request is sent after the first image is already received, we can say that the images were downloaded serially</li>
+</ol>
+<p><img src="img/4-1.PNG" alt="Capture 4-1"></p>
+<div class="page-break"></div>
+<h4>Part 5</h4>
+<ol start="18">
+<li>After the initial request, the server responds with a 401 Unauthorized</li>
+<li>The second request now contains the &quot;Authorization&quot; field</li>
+</ol>
+<p><img src="img/5-1.PNG" alt="Capture 5-1"></p>
+<div class="page-break"></div>
+<h3>II. Python client and server</h3>
+<h4>Server</h4>
+<p><img src="ServerScreenshot.png" alt="Server"></p>
+<h4>Test Cases</h4>
+<p><img src="ClientScreenshot.png" alt="Server"></p>
+
+</div></body>
+</html>

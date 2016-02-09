@@ -1,0 +1,9 @@
+Name	ID	City	Favorite Fruit
+Arie	1	Stony Brook	"watermelon, apple"
+Leo	2	Old Field	kiwi
+Rob	3	Port Jefferson	"pineapple, mango"
+Paul	4	East Setauket	"blueberry, apple"
+Ahmad	5	Centereach	cherry
+Richard	6	Huntington	"banana, strawberry"
+Ahmad	5	Centereach	coke
+Richard	6	Huntington	"hi"
