@@ -1,4 +1,4 @@
-file_name = input("Input file name :")
+file_name = input("Input old file name :")
 content = []
 
 f = open(file_name)

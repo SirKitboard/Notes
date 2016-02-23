@@ -1,0 +1,190 @@
+##########################################
+#						Question 1                   #
+##########################################
+
+file_name = input("Input file name :")
+content = []
+
+f = open(file_name)
+for line in f:
+    line = line.replace('<span>', '')
+    line = line.replace('</span>', '')
+    # print(line)
+    content.append(line)
+
+splitFileName = file_name.split('.')
+if(len(splitFileName) > 1):
+    newFileName = splitFileName[0] + '_output.' + splitFileName[1]
+else:
+    newFileName = splitFileName[0] + '_output'
+
+f = open(newFileName, "w")
+for line in content:
+    f.write(line)
+
+
+##########################################
+#						Question 2                  #
+##########################################
+
+encryptedText = "pda lupdkj lnkcnwiiejc hwjcqwca swo ejrajpaz xu cqezk rwj nkooqi, w zqpydykilqpan lnkcnwiian, wxkqp 25 uawno wck. rwj nkooqi zabejaz deo ckwho bknlupdkj wo bkhhkso: wj awou wjz ejpqepera hwjcqwca fqop wo lksanbqh wo iwfknykilapepkno; klaj okqnya, ok wjukja ywj ykjpnexqpa pk epo zarahkliajp; ykzapdwp eo wo qjzanopwjzwxha wo lhwej ajcheod; oqepwxehepu bkn aranuzwu pwogo,whhksejc bkn odknp zarahkliajp peiao"
+decryptedText = ""
+
+for c in encryptedText:
+    charIndex = ord(c)
+    if(charIndex >= 65 and charIndex <= 90):
+        # print('hi')
+        newIndex = (charIndex - 61) % 26 + 65
+        newChar = chr(newIndex)
+        decryptedText = decryptedText + newChar
+    elif (charIndex >= 97 and charIndex <= 122):
+        # print('hello')
+        newIndex = (charIndex - 93) % 26 + 97
+        # print(newIndex)
+        newChar = chr(newIndex)
+        decryptedText = decryptedText + newChar
+    else:
+        decryptedText = decryptedText + c
+
+print (decryptedText)
+
+
+##########################################
+#						Question 5                  #
+##########################################
+
+stringArray = []
+
+stringArray.append(input("Input the first string :"))
+stringArray.append(input("Input the second string :"))
+stringArray.append(input("Input the third string :"))
+stringArray.append(input("Input the fourth string :"))
+
+sortedArray = sorted(stringArray, key=str.lower)
+
+print("\nSorted Array:")
+for element in sortedArray:
+    print(element)
+
+
+##########################################
+#						Question 6                  #
+##########################################
+
+file_name = input("Input old file name :")
+
+old = {}
+new = {}
+
+oldOnly = {}
+newOnly = {}
+both = {}
+
+f = open(file_name)
+for line in f:
+	values = line.split('\t')
+	if(len(values) > 1):
+		key = values[0].lower() + values[1].lower()
+		old[key] = line
+		oldOnly[key] = line
+
+file_name = input("Input new file name :")
+f = open(file_name)
+for line in f:
+	values = line.split('\t')
+	if(len(values) > 1):
+		key = values[0].lower() + values[1].lower()
+		new[key] = line
+		if key in old:
+			both[key] = line
+			del oldOnly[key]
+		else:
+			newOnly[key] = line
+
+# print(newOnly, both, oldOnly)
+
+f = open("old.txt", "w")
+for key in oldOnly:
+    f.write(oldOnly[key])
+
+f = open("new.txt", "w")
+for key in newOnly:
+    f.write(newOnly[key])
+
+f = open("both.txt", "w")
+for key in both:
+    f.write(both[key])
+
+##########################################
+#						Question 7 With Bonus        #
+##########################################
+
+# file_name = input("Input old file name :")
+import operator
+
+file_name = input("Input html file name :")
+webpage = ""
+
+f = open(file_name)
+for line in f:
+	webpage+=line
+
+startingIndex = -1
+
+str_dataURL = "data-imageurl=\""
+str_dataNotes = "data-notes=\""
+str_closingTag = "\">"
+
+notes = []
+
+# print(webpage.index(str_dataURL))
+startingIndex = webpage.find(str_dataURL, startingIndex+1)
+while startingIndex > 0:
+	# print(startingIndex)
+	imageURL = webpage[startingIndex + len(str_dataURL):webpage.find(str_closingTag, startingIndex+1)]
+	notesStartingIndex = webpage.find(str_dataNotes, startingIndex+1)
+	numNotes = webpage[notesStartingIndex + len(str_dataNotes):webpage.find(str_closingTag, notesStartingIndex + 1)]
+	notes.append({
+		'imageURL': imageURL,
+		'numNotes': int(numNotes)
+	})
+	# print(numNotes)
+	# print(imageURL)
+	startingIndex = webpage.find(str_dataURL, startingIndex+1)
+
+notes = sorted(notes, key=operator.itemgetter('numNotes'), reverse=True)
+
+# print(notes)
+
+f = open("output.html", "w")
+f.write("""
+<html>
+<head>
+<title>Most Notes</title>
+</head>
+<body>
+<ol>
+""")
+
+for i in range(0,5):
+	f.write('<li><a href="'+notes[i]["imageURL"]+'">'+str(notes[i]["numNotes"])+'</a></li>\n')
+
+f.write("</ol></body></html>")
+
+
+##########################################
+#						Question 7                   #
+##########################################
+
+
+def listDifference(list1, list2):
+	for element in list2:
+		if(element in list1):
+			list1 = [x for x in list1 if x != element]
+	return list1
+
+def listUnion(list1, list2):
+	list1 = listDifference(list1, list2)
+	for element in list2:
+		list1.append(element)
+	return list1
