@@ -2,6 +2,8 @@
 
 ## Aditya Balwani, SBUID: 109353920
 
+Python version 3 was used for this assignment
+
 ### Question 3 output:
 
 ```
