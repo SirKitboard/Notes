@@ -1,0 +1,21 @@
+\documentclass{article}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+\usepackage{listings}
+\renewcommand{\familydefault}{\sfdefault}
+\begin{document}
+\pagenumbering{arabic}
+\section{02/01/17}
+\subsection{SelecionSort}
+\begin{lstlisting}
+SelecionSort(A)
+	i = findLargestElement(A)
+	SWAP(A[i], A[A.length - 1])
+	SelectionSort(A[0:A.length-2])
+\end{lstlisting}
+\end{document}
