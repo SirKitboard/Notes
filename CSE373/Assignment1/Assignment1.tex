@@ -7,6 +7,7 @@
  top=20mm,
  }
 \usepackage{listings}
+\usepackage{amsmath}
 \renewcommand{\familydefault}{\sfdefault}
 \title{\textbf{CSE373 Assignment 1}}
 \author{Aditya Balwani\\SBUID: 109353920}
@@ -15,48 +16,116 @@
 \maketitle
 \pagenumbering{arabic}
 \section{Question 1}
-\subsection{Part 1}
-We need to prove that
-\[\frac{3n^3 + 9n^2 + n - 1}{n^3} \le c \textrm{ for all } n \ge 1\]
-We know that
-\[3 + 9 + 1 - 1 = \frac{3n^3 + 9n^3 + n^3 - 1n^3}{n^3} > \frac{3n^3 + 9n^2 + n - 1}{n^3} \textrm{ for all } n \ge 1\]
-\[12 > \frac{3n^3 + 9n^2 + n - 1}{n^3} \textrm{ for all } n \ge 1\]
-So let constant be 12
-\[\frac{3n^3 + 9n^2 + n - 1}{n^3} \le 12 \textrm{ for all } n \ge 1\]
-Thus $ f(n) = O(g(n))$
+    \subsection{Part 1}
+        We need to prove that
+        \[\frac{3n^3 + 9n^2 + n - 1}{n^3} \le c \textrm{ for all } n \ge 1\]
+        We know that
+        \[3 + 9 + 1 - 1 = \frac{3n^3 + 9n^3 + n^3 - 1n^3}{n^3} > \frac{3n^3 + 9n^2 + n - 1}{n^3} \textrm{ for all } n \ge 1\]
+        \[12 > \frac{3n^3 + 9n^2 + n - 1}{n^3} \textrm{ for all } n \ge 1\]
+        So let constant be 12
+        \[\frac{3n^3 + 9n^2 + n - 1}{n^3} \le 12 \textrm{ for all } n \ge 1\]
+        Thus $ f(n) = O(g(n))$
 
-\subsection{Part 2}
-We need to prove that
-\[\frac{5n\log_2 n + 8n - 200}{n\log_2 n} \le c \textrm{ for all } n \ge 1\]
-We know that
-\[5 + 8 - 200 = \frac{5n\log_2 n + 8n\log_2 n - 200n\log_2 n}{n\log_2 n} > \frac{5n\log_2 n + 8n - 200}{n\log_2 n} \textrm{ for all } n \ge 1\]
-\[187 > \frac{5n\log_2 n + 8n - 200}{n\log_2 n} \textrm{ for all } n \ge 1\]
-So let constant be -187
-\[\frac{5n\log_2 n + 8n - 200}{n\log_2 n} \le -187 \textrm{ for all } n \ge 1\]
-Thus $ f(n) = O(g(n))$
+    \subsection{Part 2}
+        We need to prove that
+        \[\frac{5n\log_2 n + 8n - 200}{n\log_2 n} \le c \textrm{ for all } n \ge 1\]
+        We know that
+        \[5 + 8 - 200 = \frac{5n\log_2 n + 8n\log_2 n - 200n\log_2 n}{n\log_2 n} > \frac{5n\log_2 n + 8n - 200}{n\log_2 n} \textrm{ for all } n \ge 1\]
+        \[187 > \frac{5n\log_2 n + 8n - 200}{n\log_2 n} \textrm{ for all } n \ge 1\]
+        So let constant be -187
+        \[\frac{5n\log_2 n + 8n - 200}{n\log_2 n} \le -187 \textrm{ for all } n \ge 1\]
+        Thus $ f(n) = O(g(n))$
 
 \section{Question 2}
-The correct order of growth rate is :
-\begin{itemize}
-    \item $O(log n)$
-    \item $O(\sqrt{n})$
-    \item $O(n)$
-    \item $O(n log n)$
-    \item $O(n^1.9)$
-    \item $O(n^2)$
-    \item $O(n^3)$
-    \item $O(2^n)$
-    \item $O(n!)$
-\end{itemize}
+    The correct order of growth rate is :
+    \begin{itemize}
+        \item $O(log n)$
+        \item $O(\sqrt{n})$
+        \item $O(n)$
+        \item $O(n log n)$
+        \item $O(n^1.9)$
+        \item $O(n^2)$
+        \item $O(n^3)$
+        \item $O(2^n)$
+        \item $O(n!)$
+    \end{itemize}
 
 \section{Question 3}
 
-\begin{itemize}
-    \item $O(n^1.1)$
-    \item $O(n^3)$
-    \item $O(n^3)$
-    \item $O(2^n)$
-    \item $O(n^2)$
-\end{itemize}
+    \begin{itemize}
+        \item $O(n^1.1)$
+        \item $O(n^3)$
+        \item $O(n^3)$
+        \item $O(2^n)$
+        \item $O(n^2)$
+    \end{itemize}
 
+\section{Question 4}
+
+    \begin{align*}
+        T(1) &= 1 \\
+        T(n) &= 1 + n^2 + 2T(\frac{n}{2}) \\
+        &= 1 + n^2 + 2((\frac{n}{2})^2 + 1 + 2T(\frac{n}{4}))\\
+        &= 1 + n^2 + 2(\frac{n^2}{2^2})^2) + 2 + 4T(1 + \frac{n}{4}^2 + 2T(\frac{n}{4}))\\
+        &\textrm{Using this pattern we see that :}\\
+        &= (1 + 2 + 4 ... ) + (n^2 + 2\frac{n^2}{2^2} + 4\frac{n^2}{4^2} + 2^i T\frac{n}{2^i}\\
+        &\textrm{The series 1 + $\frac{1}{2} + \frac{1}{4}$ .. will gives us 2}
+        &= (2^i -1) + 2n^2 + 2^i T\frac{n}{2^i}\\
+        &\textrm{The base case is T(1) = 1}\\
+        &\textrm{Using this we find i}\\
+        &\frac{n}{2^i} = 1 => log_2 n = i\\
+        T(n) &= 2^{log_2 n} - 1 + 2n^2 + 2^i T(1)\\
+        &= 2^{log_2 n} - 1 + 2n^2 + 2^{log_2 n} c\\
+        &= n - 1 + 2n^2 + n
+    \end{align*}
+    This means that this merge sort is $O(n^2)$
+
+\section{Question 5}
+    \subsection{Part 1}
+    \subsection{Part 2}
+        \begin{align*}
+            T(n) &= 4T(\frac{n}{2}) + n^2\sqrt{n}\\
+            &= 4(T(\frac{n}{4}) + (\frac{n}{2})^2 \sqrt{\frac{n}{2}}) + n^2\sqrt{n}\\
+            &= 4T(\frac{n}{4}) + 4(\frac{n}{2})^2 \sqrt{\frac{n}{2}} + n^2\sqrt{n}\\
+            &= 4(T(\frac{n}{8}) + (\frac{n}{4})^2 \sqrt{\frac{n}{4}}) + 4(\frac{n}{2})^2 \sqrt{\frac{n}{2}} + n^2\sqrt{n}\\
+            &= 4T(\frac{n}{8}) + 4(\frac{n}{4})^2 \sqrt{\frac{n}{4}} + 4(\frac{n}{2})^2 \sqrt{\frac{n}{2}} + n^2\sqrt{n}\\
+            &= 4^i T(\frac{n}{2^i}) + in^2.5
+            &\textrm{Using this we find i}\\
+            &\frac{n}{2^i} = 1 => log_2 n = i\\
+            &\textrm{The base case is T(1) \textless c}\\
+            &\textrm{Plugging in the value of i}\\
+            T(n) &= 4^{log_2 n}T(1) + log_2 nn^{2.5}\\
+            &= 4^{log_2 n}c + n^{2.5}log_2 n\\
+        \end{align*}
+        This means that this is $O(n^{2.5}log_2 n)$
+
+\section{Question 6}
+    \lstinputlisting[language=Python]{compare2Lists.py}
+
+    The running time of the merge sort is $O(nlogn)$ and the comparison is $O(n)$
+    So the running time of the program is $O(nlogn)$
+\\
+\section{Question 7}
+    In a pivoted array, all elements to the left of the pivot are less than the pivot and all to the right are greater.
+    In this array 42, 55 and 73 could have been the pivots
+
+\section{Question 8}
+    findIndexOfLargestElement was defined in class
+
+    \lstinputlisting[language=Python]{pancakesort.py}
+
+    The total time complexity for this is $O(n^2)$
+
+\section{Question 9}
+
+    One possible way to do this is to do a binary search on the 100 floors to see where the jar breaks. The max number of drops for that is 7 we'll end up breaking more than 2 jars.
+    Another start at some value i, and then double it if it doesn't break and if it does break then we know it lies between the original x and the incremented value so we start at x and keep incrementing by 1 until it breaks.
+    For a 100, thats not the optimal solution because the worse case is 19 drops. However we noticed that if the egg breaks in an early drop then we have more drops to work with to not hit the worse case. So by using algebra we get :
+    $x + (x-1) + (x-2) .. >= 100$
+    $x(x+2) >= 100$
+    Solving for x gives us 14.
+    Which means we start droping at the 14th floor and then if it breaks we start 1 and go up till 14 till we see the breaking point and if it doesn't break then we move up another 13 floors and repeat.
+
+    Algorithm for N floors :
+    \lstinputlisting[language=Python]{glassjar.py}
 \end{document}
