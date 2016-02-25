@@ -3,8 +3,8 @@
  \geometry{
  a4paper,
  total={170mm,257mm},
- left=20mm,
- top=20mm,
+ left=22mm,
+ top=22mm,
  }
 \usepackage{listings}
 \usepackage{amsmath}
@@ -12,6 +12,11 @@
 \title{\textbf{CSE373 Assignment 1}}
 \author{Aditya Balwani\\SBUID: 109353920}
 \newcommand\tab[1][1cm]{\hspace*{#1}}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Aditya Balwani, SBUID : 109353}
+\rfoot{Page \thepage}
 \begin{document}
 \maketitle
 \pagenumbering{arabic}
@@ -69,7 +74,7 @@
         &= 1 + n^2 + 2(\frac{n^2}{2^2})^2) + 2 + 4T(1 + \frac{n}{4}^2 + 2T(\frac{n}{4}))\\
         &\textrm{Using this pattern we see that :}\\
         &= (1 + 2 + 4 ... ) + (n^2 + 2\frac{n^2}{2^2} + 4\frac{n^2}{4^2} + 2^i T\frac{n}{2^i}\\
-        &\textrm{The series 1 + $\frac{1}{2} + \frac{1}{4}$ .. will gives us 2}
+        &\textrm{The series 1 + $\frac{1}{2} + \frac{1}{4}$ .. will gives us 2}\\
         &= (2^i -1) + 2n^2 + 2^i T\frac{n}{2^i}\\
         &\textrm{The base case is T(1) = 1}\\
         &\textrm{Using this we find i}\\
@@ -82,6 +87,27 @@
 
 \section{Question 5}
     \subsection{Part 1}
+        \begin{align*}
+            &\textrm{Let $t = 0.3$}\\
+            T(n) &= 2T(\frac{n}{4}) + n^t\\
+            &= 2(2T(\frac{n}{16}) + (\frac{n}{4})^t) + n^t\\
+            &= 4T(\frac{n}{16}) + 2(\frac{n}{4})^t + n^t\\
+            &= 4(2T(\frac{n}{64}) + (\frac{n}{16})^t) + 2(\frac{n}{4})^t + n^t\\
+            &= 8T(\frac{n}{64}) + 4(\frac{n}{16})^t + 2(\frac{n}{4})^t + n^t\\
+            &\textrm{Using the above observed pattern we get:}\\
+            &= 2^i (\frac{n}{4^i}) + n^t(1 + \frac{2}{4^t} + (\frac{2}{4^t})^2 ...)\\
+            &= 2^i (\frac{n}{4^i}) + \frac{1 - (\frac{2}{4^t})^i}{1 - (\frac{2}{4^t})}\\
+            &\textrm{We now that $T(n) \leq c$, let $c_1 = \frac{1}{1 - (\frac{2}{4^t})}$}\\
+            &\textrm{Using this we find i}\\
+            &\frac{n}{2^i} = 1 => log_4 n = i\\
+            &\textrm{Subbing this into the earlier equations we get :}\\
+            T(n) &= 2^i T(n) + c_1 n^t - c_1 (\frac{2}{4^t})^i n\\
+            &= 2^{log_4 n}c + c_1 n^{t} - c_1 2^{log_4 n}\\
+            &= 2^{\frac{log_2 n}{log_2 4}}c + c_1 n^{t} - c_1 2^{\frac{log_2 n}{log_2 4}}\\
+            &= 2^{\frac{log_2 n}{2}}c + c_1 n^{t} - c_1 2^{\frac{log_2 n}{2}}\\
+            &= \sqrt{n}(c+c_1) + c_1 n^{t}
+        \end{align*}
+        This means that this is $O(\sqrt{n})$
     \subsection{Part 2}
         \begin{align*}
             T(n) &= 4T(\frac{n}{2}) + n^2\sqrt{n}\\
@@ -89,7 +115,7 @@
             &= 4T(\frac{n}{4}) + 4(\frac{n}{2})^2 \sqrt{\frac{n}{2}} + n^2\sqrt{n}\\
             &= 4(T(\frac{n}{8}) + (\frac{n}{4})^2 \sqrt{\frac{n}{4}}) + 4(\frac{n}{2})^2 \sqrt{\frac{n}{2}} + n^2\sqrt{n}\\
             &= 4T(\frac{n}{8}) + 4(\frac{n}{4})^2 \sqrt{\frac{n}{4}} + 4(\frac{n}{2})^2 \sqrt{\frac{n}{2}} + n^2\sqrt{n}\\
-            &= 4^i T(\frac{n}{2^i}) + in^2.5
+            &= 4^i T(\frac{n}{2^i}) + in^2.5\\
             &\textrm{Using this we find i}\\
             &\frac{n}{2^i} = 1 => log_2 n = i\\
             &\textrm{The base case is T(1) \textless c}\\
@@ -108,7 +134,7 @@
 \section{Question 7}
     In a pivoted array, all elements to the left of the pivot are less than the pivot and all to the right are greater.
     In this array 42, 55 and 73 could have been the pivots
-
+\newpage
 \section{Question 8}
     findIndexOfLargestElement was defined in class
 
