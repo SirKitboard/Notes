@@ -1,0 +1,21 @@
+##########################################################
+#						Question 1                       #
+##########################################################
+
+a) perl --version
+b) perldoc perl
+c)
+d) perldoc -f map
+e) perldoc -v '$!'
+
+##########################################################
+#						Question 2                       #
+##########################################################
+
+a) Prints out a randoms string of length 8 containing lowercase letters.
+perl -le "print ((map{('\!', '?', '#', ';', '-')[rand 5]} 1..2), (map{('a'..'z', 'A'..'Z')[rand 42]} 1..4), (map{('0'..'9')[rand 10]} 1..2))"
+
+b) Prints all multiples of 3 in given string separated by the # character
+print join "", grep{/[0-9]/} split //, "CSE337";
+
+c) print reduce {(($a % 2 eq 0) ? $a : $a) + (($b % 2 eq 0) ? $b / 2 : $b)} 0, 1..100;
