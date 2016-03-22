@@ -1,0 +1,55 @@
+\documentclass{article}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=22mm,
+ top=22mm,
+ }
+\usepackage{listings}
+\usepackage{amsmath}
+\renewcommand{\familydefault}{\sfdefault}
+\title{\textbf{CSE373 Notes}}
+\author{Aditya Balwani\\SBUID: 109353920}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Aditya Balwani, SBUID : 109353}
+\rfoot{Page \thepage}
+\begin{document}
+\maketitle
+\pagenumbering{arabic}
+\section{March 10}
+    Given a problem of size N
+    \begin{itemize}
+        \item Break problem into several subproblems of size \textless n
+        \item solve several subproblems of size \textless n
+        \item Computer solution to the original problem from solutions to subproblems
+    \end{itemize}
+
+    Examples of DaQ : Quicksort and Merge Sort
+
+    \subsection{Integer Multiplication}
+
+        $T(n)$ = number of bit ops to multiple two n bit integers
+
+        \[T(n) = 4T(n/2) + O(n)\]
+        \[T(1) = O(1)\]
+        By master theorum since $log_b a = 2 > c = 1$
+        \[T(n) = O(n^{log_b a} = O(n^2))\]
+
+        Using karatsube's algorithm
+
+        \[T(n) = 3T(n/2) + O(n)\]
+        \[T(1) = 1\]
+        By master theorum :
+        \[T(n) = O(n^{log_2 3}) = O(n^1.6) = O(n^2)\]
+
+    \subsection{Binary Exponentiation}
+
+        Goal : Given x, a, m, all n-bit numbers compute $x^a mod m$
+
+
+
+\end{document}
