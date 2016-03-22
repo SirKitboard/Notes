@@ -19,3 +19,10 @@ b) Prints all multiples of 3 in given string separated by the # character
 print join "", grep{/[0-9]/} split //, "CSE337";
 
 c) print reduce {(($a % 2 eq 0) ? $a : $a) + (($b % 2 eq 0) ? $b / 2 : $b)} 0, 1..100;
+
+##########################################################
+#						Question 7                       #
+##########################################################
+
+a) The path variable stores all the directories which the shell searches for executable files in response to a user input command.
+b)
