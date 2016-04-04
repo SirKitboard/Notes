@@ -1,0 +1,63 @@
+\documentclass{article}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+\usepackage{listings}
+\usepackage{amsmath}
+\renewcommand{\familydefault}{\sfdefault}
+\title{\textbf{CSE373 Assignment 1}}
+\author{Aditya Balwani\\SBUID: 109353920}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\begin{document}
+\maketitle
+\pagenumbering{arabic}
+\section{Rotating Images}
+	\subsection{Part 1 : n is power of 2}
+	\lstinputlisting[language=Python]{rotatepow2.py}
+
+	\subsection{Part 2 : n not is power of 2}
+    \lstinputlisting[language=Python]{rotatearbitrary.py}
+
+    \subsection{Part 3: find T(n) if rectangular copy is $O(n^2)$}
+    Assuming rc(a) is the running time of Rectangular Copy on a (a x a) matrix
+        \begin{align*}
+            T(n) &= 4T(n/2) + 4rc(n/2) + c'\\
+            &= 4^2T(n/2^2) + 4^2rc(n/2^2) + 4rc(n/2) + c' + c'\\
+            &= ... \\
+            &= 4^iT(n/2^i) + \sum_{j=1}^{i}4^jrc(n/2^j) + ic'
+        \end{align*}
+        The base case is $T(1) \leq c$, in which $n/2^i = 1$. We have $2^i = n$ and $i = log n$. Since we know that $rc(a) = O(a^2)$, it means there exists $c_0 st rc(a) \leq c_a(a^2)$. Then we have
+        \[4^jrc(n/2^j) \leq 4^j(c_0(n/2^j)^2) = c_0(4^j(n/2^j)^2 = c_0n^2)\]
+        Hence we have :
+        \begin{align*}
+            T(n) &= 4^iT(n/2^i) + \sum_{j=1}^{i}4^jrc(n/2^j) + ic'\\
+            &\leq cn^2 + \sum_{j=1}^{i}c_0n^2 + ic'\\
+            &= cn^2 + log n(c_0n^2) + ic'\\
+            &=O(n^2log n)\\
+        \end{align*}
+
+    \subsection{Part 4: find T(n) if rectangular copy is $O(n)$}
+    Assuming rc(a) is the running time of Rectangular Copy on a (a x a) matrix
+        \begin{align*}
+            T(n) &= 4T(n/2) + 4rc(n/2) + c'\\
+            &= 4^2T(n/2^2) + 4^2rc(n/2^2) + 4rc(n/2) + c' + c'\\
+            &= ... \\
+            &= 4^iT(n/2^i) + \sum_{j=1}^{i}4^jrc(n/2^j) + ic'
+        \end{align*}
+        The base case is $T(1) \leq c$, in which $n/2^i = 1$. We have $2^i = n$ and $i = log n$. Since we know that $rc(a) = O(a^2)$, it means there exists $c_0 st rc(a) \leq c_a(a)$. Then we have
+        \[4^jrc(n/2^j) \leq 4^j(c_0(n/2^j)) = c_0(4^j(n/2^j) = c_0n2^j)\]
+        Hence we have :
+        \begin{align*}
+            T(n) &= 4^iT(n/2^i) + \sum_{j=1}^{i}4^jrc(n/2^j) + ic'\\
+            &= cn^2 c_0 \sum_{j=1}^{i} 2^jn + ic'\\
+            &= cn^2 + c_0(2^{i+1} - 2)n + ic'\\
+            &= cn^2 + c_0(2n - 2)n + ic'\\
+            &= (c+2c_0)n^2 - 2c_0n + c'log n\\
+            &= O(n^2)
+        \end{align*}
+
+\end{document}
