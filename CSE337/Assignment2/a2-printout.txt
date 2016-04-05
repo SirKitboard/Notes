@@ -1,10 +1,14 @@
+Aditya Balwani
+SBUID: 109353920
+Programmed on Ubuntu
+
 ##########################################################
 #						Question 1                       #
 ##########################################################
 
 a) perl --version
 b) perldoc perl
-c)
+c) perldoc perlfunc
 d) perldoc -f map
 e) perldoc -v '$!'
 
@@ -21,8 +25,293 @@ print join "", grep{/[0-9]/} split //, "CSE337";
 c) print reduce {(($a % 2 eq 0) ? $a : $a) + (($b % 2 eq 0) ? $b / 2 : $b)} 0, 1..100;
 
 ##########################################################
+#						Question 3                       #
+##########################################################
+
+use strict;
+use warnings;
+
+$num = 5;
+$num = $ARGV[0] if $ARGV[0];
+$totalNum = $num;
+$numCorrect = 0;
+do {
+    # print int(rand 20)+1 . " " . ((int(rand 2) + 1) == 1 ? ') . " " . int(rand 30) . " = ";
+    my $a = int(rand 20)+1;
+    my $b = int(rand 30)+1;
+    my $op = ((int(rand 2) + 1) == 1 ? "+" : "-");\
+
+    print $a . " " . $op . " " . $b . " = ";
+    my $inputValue = <STDIN>;
+    chomp $inputValue;
+
+    if($op eq "+") {
+        if($inputValue eq ($a + $b)) {
+            $numCorrect++;
+            print "Excellent!\n"
+        }
+    }
+    unless($op eq "+") {
+        if($inputValue eq ($a - $b)) {
+            $numCorrect++;
+            print "Excellent!\n"
+        }
+    }
+    print "\n";
+    $num = $num - 1;
+} until($num eq 0);
+
+print "Your score is " . $numCorrect . " out of " . $totalNum . ". That's " . ($numCorrect * 100 / $totalNum) . "% correct. Congrats\n";
+
+
+##########################################################
+#						Question 4                       #
+##########################################################
+
+#!/usr/bin/env perl
+
+use strict;
+use warnings;
+
+open FILES, "< ".$ARGV[0] or die "Cant open input file";
+
+while(<FILES>) {
+    #Test if file exists
+    chomp $_;
+    if(-e $_) {
+        print "E  ";
+
+        #if exists, test everything else
+        if(-t $_) {
+            print "T  ";
+        } else {
+            print "-  ";
+        }
+
+        if(-r $_) {
+            print "R  ";
+        } else {
+            print "-  ";
+        }
+
+        if(-w $_) {
+            print "W  ";
+        } else {
+            print "-  ";
+        }
+
+        if(-x $_) {
+            print "X  ";
+        } else {
+            print "-  ";
+        }
+    } else {
+        #If file doesnt exist, we can assume remaining properties to be false
+        print "-  -  -  -  -  ";
+    }
+
+    print $_ . "\n";
+}
+
+
+##########################################################
+#						Question 5                       #
+##########################################################
+
+use strict;
+use warnings;
+
+my $input = "pda lupdkj lnkcnwiiejc hwjcqwca swo ejrajpaz xu cqezk rwj nkooqi, w zqpydykilqpan lnkcnwiian, wxkqp 25 uawno wck. rwj nkooqi zabejaz deo ckwho bknlupdkj wo bkhhkso: wj awou wjz ejpqepera hwjcqwca fqop wo lksanbqh wo iwfknykilapepkno; klaj okqnya, ok wjukja ywj ykjpnexqpa pk epo zarahkliajp; ykzapdwp eo wo qjzanopwjzwxha wo lhwej ajcheod; oqepwxehepu bkn aranuzwu pwogo,whhksejc bkn odknp zarahkliajp peiao";
+
+my $decryptChar = sub {
+    # print shift;
+    my $charIndex = ord(shift);
+    # print(chr($charIndex));
+    if($charIndex >= 65 && $charIndex <= 90) {
+        my $newIndex = ($charIndex - 61) % 26 + 65;
+        return chr($newIndex);
+    } elsif($charIndex >= 97 && $charIndex <= 122) {
+        my $newIndex = ($charIndex - 93) % 26 + 97;
+        return chr($newIndex);
+    } else {
+
+        return chr($charIndex);
+    }
+};
+
+my $encryptText = sub {
+    my $charIndex = ord(shift);
+
+    if($charIndex >= 65 && $charIndex <= 90) {
+        my $newIndex = ($charIndex - 69) % 26 + 65;
+        return chr($newIndex);
+    } elsif($charIndex >= 97 && $charIndex <= 122) {
+        my $newIndex = ($charIndex - 101) % 26 + 97;
+        return chr($newIndex);
+    } else {
+        # print "hi\n";
+        return chr($charIndex);
+    }
+};
+
+print "Input string : " . $input . "\n\n";
+my @decryptedText = map{$decryptChar->($_)} split('', $input);
+
+print "Decrypted Text : " . join('', @decryptedText) . "\n\n";
+
+print "Recrypted Text : ";
+print map{$encryptText->($_)} @decryptedText;
+print "\n\n"
+
+
+##########################################################
+#						Question 6                       #
+##########################################################
+
+use strict;
+use warnings;
+
+#Open input
+open HTML , "< ".$ARGV[0] or die "Cant open input file";
+
+#Open output file
+open OUTPUTHTML, "> images.html" or die "Cant open output file";
+
+#Print html tags
+print OUTPUTHTML "<html>\n";
+print OUTPUTHTML "<title>337 A2 HTML images</title>\n";
+print OUTPUTHTML "<body>\n";
+while(<HTML>) {
+    #If regex doesn't match, continue loop
+    next unless /data-imageurl=\"(http:\/\/[34][0-9].*\.jpg)\"/;
+
+    #else print image
+    print OUTPUTHTML "<img src=\"$1\"/>\n";
+}
+
+#close html
+print OUTPUTHTML "</body>";
+print OUTPUTHTML "</html>";
+
+
+##########################################################
 #						Question 7                       #
 ##########################################################
 
 a) The path variable stores all the directories which the shell searches for executable files in response to a user input command.
 b)
+
+use strict;
+use warnings;
+
+#Open input
+open INPUT , "< ".$ARGV[0] or die "Cant open input file";
+my %wordsDict;
+my $previousWord;
+
+while(<INPUT>) {
+    chomp $_;
+    my @words = split / /, $_;
+    foreach my $word(@words) {
+        if(!$previousWord) {
+            $previousWord = $word;
+            next;
+        }
+        if($wordsDict{$previousWord}) {
+            # $wordsDict{$previousWord} = ($word => "=");
+            if($wordsDict{$previousWord}{$word}) {
+                $wordsDict{$previousWord}{$word} = $wordsDict{$previousWord}{$word} . "=";
+            } else {
+                $wordsDict{$previousWord}{$word} = "=";
+            }
+        } else {
+            $wordsDict{$previousWord} = {$word => "="};
+        }
+        $previousWord = $word;
+    }
+
+}
+
+print "Enter a word : ";
+my $inputWord = <STDIN>;
+chomp $inputWord;
+if($wordsDict{$inputWord}) {
+    while(my ($key, $value) = each(%{$wordsDict{$inputWord}})) {
+        print $key . "\t" . $value . "\n";
+    }
+} else {
+    print "Word not found";
+}
+
+
+##########################################################
+#						Question 8                       #
+##########################################################
+
+use strict;
+use warnings;
+
+my $numKeys = keys %ENV;
+
+print "Number of variables in PATH : " . $numKeys . "\n\n";
+
+my $pathDirs = $ENV{PATH};
+
+print "Content of PATH : " . $pathDirs . "\n\n";
+
+print "Number of directories in path : " . split(/:/, $pathDirs) , "\n\n";
+
+print "Sorted directories : \n";
+print join("\n", split /:/, $pathDirs) . "\n\n";
+
+#Adding current directory to path
+$ENV{PATH} = $ENV{PATH} . ":.";
+print "Executing 'while.pl' : \n\n";
+system("while.pl");
+
+
+##########################################################
+#						Question 9                       #
+##########################################################
+
+use strict;
+use warnings;
+
+#Open input
+open INPUT , "< ".$ARGV[0] or die "Cant open input file";
+my %wordsDict;
+my $previousWord;
+
+while(<INPUT>) {
+    chomp $_;
+    my @words = split / /, $_;
+    foreach my $word(@words) {
+        if(!$previousWord) {
+            $previousWord = $word;
+            next;
+        }
+        if($wordsDict{$previousWord}) {
+            # $wordsDict{$previousWord} = ($word => "=");
+            if($wordsDict{$previousWord}{$word}) {
+                $wordsDict{$previousWord}{$word} = $wordsDict{$previousWord}{$word} . "=";
+            } else {
+                $wordsDict{$previousWord}{$word} = "=";
+            }
+        } else {
+            $wordsDict{$previousWord} = {$word => "="};
+        }
+        $previousWord = $word;
+    }
+
+}
+
+print "Enter a word : ";
+my $inputWord = <STDIN>;
+chomp $inputWord;
+if($wordsDict{$inputWord}) {
+    while(my ($key, $value) = each(%{$wordsDict{$inputWord}})) {
+        print $key . "\t" . $value . "\n";
+    }
+} else {
+    print "Word not found";
+}
