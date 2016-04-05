@@ -8,13 +8,18 @@
  }
 \usepackage{listings}
 \usepackage{amsmath}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Aditya Balwani, SBUID: 109353920}
+\lhead{}
+\rfoot{Page \thepage}
 \renewcommand{\familydefault}{\sfdefault}
 \title{\textbf{CSE373 Assignment 1}}
 \author{Aditya Balwani\\SBUID: 109353920}
 \newcommand\tab[1][1cm]{\hspace*{#1}}
 \begin{document}
 \maketitle
-\pagenumbering{arabic}
 \section{Rotating Images}
 	\subsection{Part 1 : n is power of 2}
 	\lstinputlisting[language=Python]{rotatepow2.py}
@@ -59,5 +64,47 @@
             &= (c+2c_0)n^2 - 2c_0n + c'log n\\
             &= O(n^2)
         \end{align*}
+\section{Applications of findRankKElt}
+\label{sec:Applications of findRankKElt}
+    Assuming findRankKElt returns the kth smallest element of the array
+
+    \subsection{K1th to K2th Smallest Elements}
+    \label{sub:K1th to K2th Smallest Elements}
+        \lstinputlisting[language=Python]{3-1.py}
+
+    \subsection{Check if an element occurs more than n/2 times}
+    \label{sub:Check if an element occurs more than n/2 times}
+        We can assume that if the element occurs in the array more than n/2 times, than that element is the median of the array after it is sorted
+
+        \lstinputlisting[language=Python]{3-2.py}
+
+    \subsection{Find Weighted Median}
+    \label{sub:Find Weighted Median}
+
+        \lstinputlisting[language=Python]{3-3.py}
+
+\section{Find the lonely element}
+\label{sec:Find the lonely element}
+
+    \lstinputlisting[language=Python]{findLonelyElement.py}
+
+\section{Find Frequent Element}
+\label{sec:Find Frequent Element}
+
+    \subsection{O(nlogn) Algorithm}
+    \label{sub:nlogn Algorithm}
+
+        \lstinputlisting[language=Python]{frequentElementNlogn.py}
+
+    \subsection{O(n) Algorithm}
+    \label{sub:nlogn Algorithm}
+
+        \lstinputlisting[language=Python]{frequentElement.py}
+
+\section{Tetromino Cover}
+\label{sec:Tetromino Cover}
+
+    A chessboard has an even number of white and black squares. A T-tetronimo covers 3 of the same color and 1 other color, ie. either 3 black and 1 white or 3 white and one black. A square tetronimo covers 2 of each.
+    As a result, after we place 15 T-tetrominoes on the board, an odd number of whites and blacks are covered. After we add the additional square, the number of whites and blacks covered are still odd which means a complete cover is not possible
 
 \end{document}
