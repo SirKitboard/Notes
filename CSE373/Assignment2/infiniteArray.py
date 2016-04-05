@@ -1,3 +1,4 @@
+# A: Array
 def findLengthOfInfiniteArray(A):
     low = 0
     high = 1
@@ -8,6 +9,7 @@ def findLengthOfInfiniteArray(A):
         low+=1
     return low
 
+# A: Array, x: element to be searched
 def findElementInInfiniteArray(A, x):
     n = findLengthOfInfiniteArray(A)
     start = 0
