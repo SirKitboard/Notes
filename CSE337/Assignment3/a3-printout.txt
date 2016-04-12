@@ -50,16 +50,27 @@ e)
     print "\ninput string : ";
     }
 
+
+    OUTPUT:
+    adi@adi-Inspiron-5537:~/Projects/Notes/CSE337/Assignment3$ perl q1.pl
+    input pattern : [A-Z]{3}[0-9]{3}
+    input string : CSE308
+    <CSE308>
+    input string : CS12
+    no match
+    input string :
+
+
 ##########################################################
 #						Question 2                       #
 ##########################################################
 
-a) Matches 5-10 word characters or a hyphens
-b) Matches any string that contains only 1 positive or negative decimal numbers
-c) Replaces every insance of an open or close bold html tag (<b> or </b>) with the relevant strong html tag, ignores case
-d) Matches the first HTML open and close tag it it finds along with anything in between
-e) Matches the first HTML open and close tag it it finds along with anything in between. The previous one was a lazy search while this one is greedy search.
-f) Matches email addresses with atleast one space before it
+a) Matches 5-10 word characters or a hyphens eg. "hello", "tick-tock"
+b) Matches any string that contains only 1 positive or negative decimal numbers eg. "123", "-123"
+c) Replaces every instance of an open or close bold html tag (<b> or </b>) with the relevant strong html tag, ignores case eg. "<b>"  becomes "<strong>" and "</b>" becomes "</strong>"
+d) Matches the first HTML open and close tag it it finds along with anything in between eg. "<b>Hello</b>", "<html>hi</html>"
+e) Matches the first HTML open and close tag it it finds along with anything in between. The previous one was a lazy search while this one is greedy search. eg. "<html><head>Hi</head></html>", "<b>Hello</b>"
+f) Matches email addresses with atleast one space before it eg " adibalwani@gmail.com", " a@a.com"
 
 ##########################################################
 #						Question 3                       #
@@ -118,6 +129,13 @@ a)  use strict;
         print($_);
     }
 
+    RUNNING INSTRUCTIONS :
+    perl q4a.pl <filename>
+
+    OUPUT:
+    adi@adi-Inspiron-5537:~/Projects/Notes/CSE337/Assignment3$ perl q4a.pl dates.txt
+    02/30/1959 06/11/1993 11/11/2012
+
 b)  use strict;
     use warnings;
 
@@ -155,3 +173,15 @@ b)  use strict;
             print($_);
         }
     }
+
+    RUNNING INSTRUCTIONS:
+    perl q4b.pl <L> <m> <c> <n> <r>
+
+    OUTPUT:
+    adi@adi-Inspiron-5537:~/Projects/Notes/CSE337/Assignment3$ perl q4b.pl 13 3 a 5 b
+    blabbermouths
+    chamberlain's
+    chambermaid's
+    flabbergasted
+    flamboyance's
+    unambiguously
