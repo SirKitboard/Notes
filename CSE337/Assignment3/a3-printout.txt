@@ -1,0 +1,157 @@
+Aditya Balwani
+SBUID: 109353920
+Programmed on Ubuntu
+
+##########################################################
+#						Question 1                       #
+##########################################################
+
+a)  Ordinary : No match
+    _ord_er
+    aff_ord_
+    c_ord_ford
+    ORD airport: No match
+
+b)  p : No match
+    a_.pl_
+    _<p_>
+    devel_op_ing
+    _pp_p
+
+c)  _foo_
+    _foobar_
+    _foobarfoo_
+    portfolio : No match
+
+d)  _work_
+    back2_work_
+    to_do__work_
+    networking : No matching
+    "course_work_ list'
+
+e)
+
+    "use strict";
+    "use warnings";
+
+    print "input pattern : ";
+    my $pattern = <STDIN>;
+    chomp $pattern;
+
+    print "input string : ";
+    while(<STDIN>) {
+    chomp $_;
+    if(m/$pattern/) {
+        s/$pattern/<$pattern>/;
+        print($_);
+    } else {
+        print "no match";
+    }
+    print "\ninput string : ";
+    }
+
+##########################################################
+#						Question 2                       #
+##########################################################
+
+a) Matches 5-10 word characters or a hyphens
+b) Matches any string that contains only 1 positive or negative decimal numbers
+c) Replaces every insance of an open or close bold html tag (<b> or </b>) with the relevant strong html tag, ignores case
+d) Matches the first HTML open and close tag it it finds along with anything in between
+e) Matches the first HTML open and close tag it it finds along with anything in between. The previous one was a lazy search while this one is greedy search.
+f) Matches email addresses with atleast one space before it
+
+##########################################################
+#						Question 3                       #
+##########################################################
+
+a)  /[A-Z]{3}[0-9]{3}/
+
+    adi@adi-Inspiron-5537:~/Projects/Notes/CSE337/Assignment3$ perl q1.pl
+    input pattern : [A-Z]{3}[0-9]{3}
+    input string : CSE308
+    <CSE308>
+    input string : CS12
+    no match
+    input string :
+
+b)  /[^\w\-.\/]/
+    /\s/
+
+    adi@adi-Inspiron-5537:~/Projects/Notes/CSE337/Assignment3$ perl q1.pl
+    input pattern : [^\w\-.\/]
+    input string :
+    < >
+    input string :
+    < >
+    input string : ^C
+    adi@adi-Inspiron-5537:~/Projects/Notes/CSE337/Assignment3$ perl q1.pl
+    input pattern : \s
+    input string :
+    < >
+    input string :
+
+c)  .*\b(\w+)\b.*(\b\1\b).*
+
+    adi@adi-Inspiron-5537:~/Projects/Notes/CSE337/Assignment3$ perl q1.pl
+    input pattern : .*\b(\w+)\b.*\b\1\b.*
+    input string : hi hello hi yo
+    hi hello hi yo
+    input string : hi hello
+    no match
+    input string :
+
+##########################################################
+#						Question 4                       #
+##########################################################
+
+a)  use strict;
+    use warnings;
+
+    open INPUT , "< ".$ARGV[0] or die "Cant open input file";
+
+    while(<INPUT>) {
+        # chomp $_;
+        # if(//)
+        s/\b([0-9]{2}\/[0-9]{2})\/([5-9][0-9])\b/$1\/19$2/g;
+        s/\b([0-9]{2}\/[0-9]{2})\/([0-4][0-9])\b/$1\/20$2/g;
+        print($_);
+    }
+
+b)  use strict;
+    use warnings;
+
+    my $length = $ARGV[0];
+    my $position1 = $ARGV[1];
+    my $letter1 = $ARGV[2];
+    my $position2 = $ARGV[3];
+    my $letter2 = $ARGV[4];
+    if($position1 > $length or $position2 > $length) {
+        die "Invalid parameters";
+    }
+    if($position2 < $position1) {
+
+        # Swap the 2 if second is smaller than first
+        my $temp = $position1;
+        $position1 = $position2;
+        $position2 = $temp;
+
+        $temp = $letter1;
+        $letter1 = $letter2;
+        $letter2 = $temp;
+    }
+
+    my $indexDifference = $position2 - $position1 - 1;
+    my $lengthIndexDifference = $length - $position2;
+    $position1  = $position1 - 1;
+
+    my $pattern = ".{$position1}[$letter1].{$indexDifference}[$letter2].{$lengthIndexDifference}";
+
+    # print($pattern);
+    open INPUT , "< /usr/share/dict/words" or die "Cant open input file";
+
+    while(<INPUT>) {
+        if(/^$pattern$/) {
+            print($_);
+        }
+    }
