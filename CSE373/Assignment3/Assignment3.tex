@@ -1,0 +1,72 @@
+\documentclass{article}
+\usepackage{geometry}
+ \geometry{
+ a4paper,
+ total={170mm,257mm},
+ left=20mm,
+ top=20mm,
+ }
+\usepackage{listings}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\rhead{Aditya Balwani, SBUID: 109353920}
+\lhead{}
+\rfoot{Page \thepage}
+\renewcommand{\familydefault}{\sfdefault}
+\title{\textbf{CSE373 Assignment 1}}
+\author{Aditya Balwani\\SBUID: 109353920}
+\newcommand\tab[1][1cm]{\hspace*{#1}}
+\begin{document}
+\maketitle
+\section{Optimal Network Transmission Combination}
+\label{sec:Optimal Network Transmission Combination}
+
+\section{Mining For Gold}
+\label{sec:Mining For Gold}
+    At each position we can either go up or right. So the maximum gold value that can be can be found is the maximum value out of the max gold value obtained by going up and the max gold value obtained by going right plus the gold value of the current spot. If we can't go up then the max value is obtained by going right and if we can't go right then max value is from going up. At the top right corner the max value is the value of the position itself. At the end we return the gold vale of T[0,0] where \\
+    \[
+    T[i,j]-
+    \begin{cases}
+        Gold[i,j]&\text{ if }(i==M-1 \land j==N-1)\\
+        Gold[i,j]+T[i,j+1]&\text{ if }(i==M-1)\\
+        Gold[i,j]+T[i+1,j]&\text{ if }(j==N-1)\\
+        Gold[i,j]+max(T[i,j+1], T[i+1,j])&\text{ otherwise}
+    \end{cases}
+    \]\\
+    The asymptotic running time is $O(mn)$\\
+    The asymptotice space requirement is $O(mn)$\\\\Psuedocode:
+
+\section{Maximum Product}
+\label{sec:Maximum Product}
+
+\section{String Decomposition}
+\label{sec:String Decomposition}
+    Lets say a and b are the 2 strings and m and n are the length of
+    Our recursive function takes in all 3 strings: a, b and c. If a and b are both of length 0 then we return false. If the first lett of c is equal to the first letter of a then we we return the value returned by the recursive call containing a[1:n],b and c[1:m+n] .
+    If not then we compare the first letter of b and c and if equal then the make the recursive call with a, b[1:n], c[1:m+n]. If that is also unequal then we return false.
+    \\
+    \[
+    T[i,j]
+    \begin{cases}
+        \text{false} &\text{ if }m \text{ and } n \text{ are both 0}\\
+        T[i-1, j]&\text{ if }a[0] == c[0]\\
+        T[i, j-1]&\text{ if }b[0] == c[0]\\
+        \text{false} &\text{ otherwise}
+    \end{cases}
+    \]\\
+    The asymptotic running time is $O(mn)$\\
+    The asymptotice space requirement is $O(mn)$\\\\Psuedocode:
+
+    \lstinputlisting[language=Python]{stringDecomp.py}
+
+\section{Two salesmen}
+\label{sec:Two salesmen}
+    We get the following recursive structure to this question.\\
+    Let $ C = distance(A)/2$ \\
+    Let T[i] be the cost of splitting the list of cities A[0]...[i-1] into 2 arrays the we have
+    \[T[i] = min_{t\in[0,i]}\sum_{l=t}^{i-1}|distance(l) - C|\]\\
+    The time complexity of this problem is $O(n^2)$
+    The space complexity is $O(n)$
+\end{document}
