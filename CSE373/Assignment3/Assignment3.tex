@@ -52,6 +52,17 @@
 
 \section{Maximum Product}
 \label{sec:Maximum Product}
+    For an array A, to find the subseries with the maximum product, we fill the dynamic programming table using the rules :
+    \[
+    T[i,j] =
+    \begin{cases}
+        A[i] &\text{ if } i == j\\
+        A[i] * T[i-1, j] &\text{ if } i > j\\
+        A[i] * T[i+1, j] &\text{ if } i < j\\
+    \end{cases}
+    \] \\where i and j are indecis in the array\\\\
+    The asymptotic running time is $O(n^2)$\\
+    The asymptotice space requirement is $O(n)$\\
 
 \section{String Decomposition}
 \label{sec:String Decomposition}
