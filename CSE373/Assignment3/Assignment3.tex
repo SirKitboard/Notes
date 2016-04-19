@@ -22,12 +22,24 @@
 \maketitle
 \section{Optimal Network Transmission Combination}
 \label{sec:Optimal Network Transmission Combination}
+    Lets assume that $Request[i]$ contains 3 variables which are startTime, endTime and size.\\
+    Lets assume that the list is sorted by the start time of each element.\\
+    At each position in the array, the maximum non overlapping sum is the maximum value out of the max overapping sum till previous index or the max overlapping sum of current index where the max sum uptil index j such that stop time doesn't overlap with current element.\\
+    \[
+    T[i]=
+    \begin{cases}
+        Request[i].size &\text{ if } (i==0)\\
+        max(T[i-1], T[j] + Request[i].time)&\text{ s.t. } j = max_{j\in[0,i-1]} Request[j]\text{ does not overlap }Request[i]
+    \end{cases}
+    \]\\
+    The asymptotic running time is $O(nlogn)$\\
+    The asymptotice space requirement is $O(n)$\\
 
 \section{Mining For Gold}
 \label{sec:Mining For Gold}
     At each position we can either go up or right. So the maximum gold value that can be can be found is the maximum value out of the max gold value obtained by going up and the max gold value obtained by going right plus the gold value of the current spot. If we can't go up then the max value is obtained by going right and if we can't go right then max value is from going up. At the top right corner the max value is the value of the position itself. At the end we return the gold vale of T[0,0] where \\
     \[
-    T[i,j]-
+    T[i,j]=
     \begin{cases}
         Gold[i,j]&\text{ if }(i==M-1 \land j==N-1)\\
         Gold[i,j]+T[i,j+1]&\text{ if }(i==M-1)\\
@@ -36,7 +48,7 @@
     \end{cases}
     \]\\
     The asymptotic running time is $O(mn)$\\
-    The asymptotice space requirement is $O(mn)$\\\\Psuedocode:
+    The asymptotice space requirement is $O(mn)$\\
 
 \section{Maximum Product}
 \label{sec:Maximum Product}
