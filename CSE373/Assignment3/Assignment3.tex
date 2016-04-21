@@ -73,7 +73,7 @@
     \[
     T[i,j]
     \begin{cases}
-        \text{false} &\text{ if }m \text{ and } n \text{ are both 0}\\
+        \text{true} &\text{ if }m \text{ and } n \text{ are both 0}\\
         T[i-1, j]&\text{ if }a[0] == c[0]\\
         T[i, j-1]&\text{ if }b[0] == c[0]\\
         \text{false} &\text{ otherwise}
@@ -92,7 +92,9 @@
     % \[T[i] = min_{t\in[0,i]}\sum_{l=t}^{i-1}|distance(l) - C|\]\\
     The problem we're trying to solve is to split A into B and C such that
     \[\min \{|distance(B) - distance(C)|\}\]
-    To solve this question we first need to fill in the dynamic programming array. We define the array T such that T[i,j] contains 1 if there is a subset of $A_0 .. A_i$ such that its sum is equal to j.\\
+    We try to find the ideal possible partition such that the sum of each side would be :
+    \[S = distance(A)/2\]
+    Now to find the partition that gives us such an S, we first need to fill in the dynamic programming array. We define the array T such that T[i,j] contains 1 if there is a subset of $A_0 .. A_i$ such that its sum is equal to j.\\
     The rule for filling in the table is as follows for this is as follows : \\
     \[
     T[i,j] =
@@ -103,13 +105,11 @@
     \]\\\\
     This gives us the following recursive structure
     \[T[i,j] = max(T[i-1,j], T[i-1, j-A[i]], 0)\\\]
-    Now we try to find the ideal possible sum which would be :
-    \[S = distance(A)/2\]
     We now try find minimum value $i \leq S$ s.t.
     \[\min_{i \leq S} \{S - i : T[n, i] = 1\}\]
-    Once we find such an i, we have the best sub we can obtain for B as i and the sum of C is 2S-i ie.
+    Once we find such an i, we have the best sum we can obtain for B as i and the sum of C is 2S-i ie.
     \[distance(B) = i \ \ \ \ \ \ \ \ \ \ \ \ distance(C) = 2S - i\]
     This is the most optimal split sum we can get and we can get the actual sets by retaining backpointers while filling in $T$\\\\
-    The time complexity of this problem is $O(n^2k)$\\
-    The space complexity is $O(n^2k)$
+    The time complexity of this problem is $O(n^2S)$\\
+    The space complexity is $O(n^2S)$
 \end{document}
